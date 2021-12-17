@@ -13,7 +13,37 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            ContaCorrente conta = new ContaCorrente(456, 7845654);
+            Console.WriteLine(conta.ToString());
 
+            Cliente carlos_1 = new Cliente();
+            carlos_1.Nome = "Carlos";
+            carlos_1.CPF = "458.623.120-03";
+            carlos_1.Profissao = "Designer";
+
+            Cliente carlos_2 = new Cliente();
+            carlos_2.Nome = "Carlos";
+            carlos_2.CPF = "458.623.120-03";
+            carlos_2.Profissao = "Designer";
+
+            ContaCorrente conta_2 = new ContaCorrente(456, 684521);
+
+
+            if(carlos_1.Equals(carlos_2))
+            {
+                Console.WriteLine("São iguais!");
+            }
+            else
+            {
+                Console.WriteLine("Não são iguais!");
+            }
+
+            Console.ReadLine(); 
+
+        }
+
+        static void TestaString()
+        {
 
             // Regex.IsMatch --> verifica se existe um padrão determinado na string selecionada.
             // Regex.Match --> acha o padrão em uma string e salva.
@@ -24,6 +54,7 @@ namespace ByteBank.SistemaAgencia
             // "[0-9]{4,5}-{0,1}[0-9]{4}";
             string padrao = "[0-9]{4,5}-?[0-9]{4}";
 
+
             string textoDeTexte = "Meu nome é Guilherme, me ligue em 4784-4546.";
 
             bool verificacaoNumero = Regex.IsMatch(textoDeTexte, padrao);
@@ -32,7 +63,7 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine("O texto possui um número de telefone? " + verificacaoNumero);
             Console.WriteLine("O Numero de telefone é : " + resultado);
 
-            Console.ReadLine(); 
+            Console.ReadLine();
 
 
             // .StartsWith | .EndsWith | .Contains
@@ -44,10 +75,10 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine(urlTeste.Contains("bytebank"));
 
             Console.WriteLine("É o site oficial do ByteBank: " + verificacaoNumero);
-            
+
             Console.WriteLine(indiceByteBank == 0);
 
-            Console.ReadLine(); 
+            Console.ReadLine();
 
 
             // ToUpper -> tudo em maiusculo  | ToLower -> tudo em minusculo
@@ -97,8 +128,7 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine(dataFimPagamento);
             Console.WriteLine("Vencimento em: " + mensagem);
 
-            Console.ReadLine(); 
-
+            Console.ReadLine();
         }
 
     }
