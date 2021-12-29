@@ -13,33 +13,132 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            ContaCorrente conta = new ContaCorrente(456, 7845654);
-            Console.WriteLine(conta.ToString());
+            Lista<int> idades = new Lista<int>();
 
-            Cliente carlos_1 = new Cliente();
-            carlos_1.Nome = "Carlos";
-            carlos_1.CPF = "458.623.120-03";
-            carlos_1.Profissao = "Designer";
+            idades.Adicionar(5);
+            idades.AdicionarVarios(1, 5, 78);
 
-            Cliente carlos_2 = new Cliente();
-            carlos_2.Nome = "Carlos";
-            carlos_2.CPF = "458.623.120-03";
-            carlos_2.Profissao = "Designer";
-
-            ContaCorrente conta_2 = new ContaCorrente(456, 684521);
+            Console.WriteLine(SomarVarios(1, 2, 3, 5, 56465, 45));
+            Console.WriteLine(SomarVarios(1, 2, 45));
 
 
-            if(carlos_1.Equals(carlos_2))
+            Console.ReadLine();
+        }
+
+        static void TestaListaDeObject()
+        {
+            ListaDeObject listaDeIdades = new ListaDeObject();
+
+            listaDeIdades.Adicionar(10);
+            listaDeIdades.Adicionar(5);
+            listaDeIdades.Adicionar(4);
+            listaDeIdades.Adicionar("um texto qualquer");
+            listaDeIdades.AdicionarVarios(16, 23, 60);
+
+            for (int i = 0; i < listaDeIdades.Tamanho; i++)
             {
-                Console.WriteLine("São iguais!");
+                int idade = (int)listaDeIdades[i];
+                Console.WriteLine($"Idade no indice {i}: {idade}");
             }
-            else
+        }
+
+        static int SomarVarios(params int[] numeros)
+        {
+            int acumulador = 0;
+            foreach (int numero in numeros)
             {
-                Console.WriteLine("Não são iguais!");
+                acumulador += numero;
+            }
+            return acumulador;
+        }
+
+
+        static void TestaListaDeContaCorrente()
+        {
+            //ListaDeContaCorrente lista = new ListaDeContaCorrente();
+            ListaDeContaCorrente lista = new ListaDeContaCorrente();
+
+            ContaCorrente contaDoGui = new ContaCorrente(11111, 1111111);
+
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                contaDoGui,
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679754)
+            };
+
+            lista.AdicionarVarios(contas);
+
+            lista.AdicionarVarios(
+                contaDoGui,
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 5679787)
+            );
+
+            for (int i = 0; i < lista.Tamanho; i++)
+            {
+                ContaCorrente itemAtual = lista[i];
+                Console.WriteLine($"Item na posição {i} = Conta {itemAtual.Numero}/{itemAtual.Agencia}");
+            }
+        }
+
+
+        static void TestaArrayDeContaCorrente()
+        {
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                new ContaCorrente(874, 464846),
+                new ContaCorrente(874, 574852),
+                new ContaCorrente(874, 658521)
+            };
+
+            for (int indice = 0; indice < contas.Length; indice++)
+            {
+
+                ContaCorrente contaAtual = contas[indice];
+                Console.WriteLine($"Conta {indice} {contaAtual.Numero}");
+
             }
 
-            Console.ReadLine(); 
 
+            Console.ReadLine();
+        }
+
+        static void testaArrayInt()
+        {
+            
+            //Array de inteiros com 5 posições
+            int[] idades = new int[6];
+
+            idades[0] = 15;
+            idades[1] = 28;
+            idades[2] = 35;
+            idades[3] = 50;
+            idades[4] = 28;
+            idades[5] = 30;
+
+            int acumulador = 0;
+            for (int indice = 0; indice < idades.Length; indice++)
+            {
+                int idade = idades[indice];
+
+                Console.WriteLine($"Acessando o array idades no índice {indice}");
+                Console.WriteLine($"Valor de idades [{indice}] = {idade}");
+
+                acumulador += idade;
+                Console.WriteLine($"Somatória de idades: {acumulador}\n");
+            }
+
+            int mediaDeIdades = acumulador / idades.Length;
+            Console.WriteLine($"A média de idades é: {mediaDeIdades}");
+
+            Console.ReadLine();
         }
 
         static void TestaString()
