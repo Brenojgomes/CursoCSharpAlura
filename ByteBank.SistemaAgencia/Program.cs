@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Humanizer;
 using System.Text.RegularExpressions;
+using ByteBank.SistemaAgencia.Extensoes;
 
 namespace ByteBank.SistemaAgencia
 {
@@ -13,14 +14,32 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            Lista<int> idades = new Lista<int>();
+            List<int> idades = new List<int>();
 
-            idades.Adicionar(5);
-            idades.AdicionarVarios(1, 5, 78);
+            idades.Add(0);
+            idades.Add(5);
+            idades.Add(8);
+            idades.Add(15);
+            idades.Add(30);
+            
+            idades.Remove(5);
 
-            Console.WriteLine(SomarVarios(1, 2, 3, 5, 56465, 45));
-            Console.WriteLine(SomarVarios(1, 2, 45));
+            idades.AdicionarVarios(80, 75, 25);
 
+            foreach(int i in idades)
+            {
+                Console.WriteLine(i);
+            }
+
+
+
+            //Lista<int> idades = new Lista<int>();
+
+            //idades.Adicionar(5);
+            //idades.AdicionarVarios(1, 5, 78);
+
+            //Console.WriteLine(SomarVarios(1, 2, 3, 5, 56465, 45));
+            //Console.WriteLine(SomarVarios(1, 2, 45));
 
             Console.ReadLine();
         }

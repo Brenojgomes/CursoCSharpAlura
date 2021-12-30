@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.SistemaAgencia
 {
-    {
-    // [item][item][item][item][item]
-    //                                ^
-    //                                 `- _proximaPosicao
-
+  
 
     public class ListaDeContaCorrente
     {
